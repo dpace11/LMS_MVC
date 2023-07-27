@@ -1,0 +1,78 @@
+﻿@model IEnumerable<LMS_MVC.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h5> Book Details</h5>
+
+<button class="edit-button">
+<a asp-action="Create">New Entry</a>
+</button>
+
+<table class="table" >
+    <thead>
+        <tr>
+            <th>
+               @Html.DisplayNameFor(model => model.BookName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublicationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RemainingQuantity)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+               <b> @Html.DisplayFor(modelItem => item.BookName)</b>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublicationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PurchaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RemainingQuantity)
+            </td>
+           <td>
+               <button class="edit-button"> <a class="btn-edit" asp-action="Edit" asp-route-id="@item.BookId">Edit</a> </button>
+               <button class="edit-button"> <a class="btn-details" asp-action="Details" asp-route-id="@item.BookId">Details</a> </button>
+               <button class="edit-button"> <a class="btn-delete" asp-action="Delete" asp-route-id="@item.BookId">Delete</a></button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

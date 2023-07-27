@@ -1,0 +1,82 @@
+﻿@model LMS_MVC.Models.Book
+
+@{
+ViewData["Title"] = "Create";
+}
+
+
+<h4>Enter Book Details</h4>
+<hr />
+<div class="row">
+    
+<div class="col-md-4">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <table  width="700px;">
+       
+           
+           
+        <div class="form-group">
+            <tr> 
+                <td> <label asp-for="BookName" class="control-label"></label></td> 
+                <td>  <input asp-for="BookName" class="form-control" />
+                <span asp-validation-for="BookName" class="text-danger"></span></td>
+            </tr>
+        </div>
+        
+  
+            
+        <div class="form-group">
+            <tr>
+                <td> <label asp-for="AuthorName" class="control-label"></label></td>
+                <td> <input asp-for="AuthorName" class="form-control" /></td>
+                        <span asp-validation-for="AuthorName" class="text-danger"></span>
+            </tr>          
+         </div>
+
+        <div class="form-group">
+            <tr> <td><label asp-for="PublicationName" class="control-label"></label></td>
+            <td> <input asp-for="PublicationName" class="form-control" />
+            <span asp-validation-for="PublicationName" class="text-danger"></span></td></tr>
+        </div>
+        <div class="form-group">
+            <tr><td><label asp-for="Price" class="control-label"></label></td>
+            <td> <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span></td></tr>
+        </div>
+        <div class="form-group">
+            <tr><td><label asp-for="PurchaseDate" class="control-label"></label></td>
+            <td> <input asp-for="PurchaseDate" class="form-control" />
+            <span asp-validation-for="PurchaseDate" class="text-danger"></span></td>
+        </tr></div>
+        <div class="form-group">
+            <tr><td> <label asp-for="Quantity" class="control-label"></label></td>
+            <td> <input asp-for="Quantity" class="form-control" />
+            <span asp-validation-for="Quantity" class="text-danger"></span></td></tr>
+        </div>
+        <div class="form-group">
+            <tr><td> <label asp-for="BookLocation" class="control-label"></label></td>
+            <td>  <input asp-for="BookLocation" class="form-control" />
+            <span asp-validation-for="BookLocation" class="text-danger"></span></td></tr>
+        </div>
+        <div class="form-group">
+            <tr><td> <label asp-for="RemainingQuantity" class="control-label"></label></td>
+            <td> <input asp-for="RemainingQuantity" class="form-control" />
+            <span asp-validation-for="RemainingQuantity" class="text-danger"></span></td></tr>
+        </div>
+        
+            </table >
+            <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+</div>
+
+<div>
+<a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

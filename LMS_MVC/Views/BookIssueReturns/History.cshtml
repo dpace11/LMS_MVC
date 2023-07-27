@@ -1,0 +1,68 @@
+﻿@model IEnumerable<LMS_MVC.Models.BookIssueReturn>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Library History</h4>
+
+<p>
+    <button><a asp-action="Create">Issue Book</a></button>&nbsp;&nbsp;&nbsp;
+    <button><a asp-action="History">View History</a></button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RollNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departmet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookIssueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookReturnDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RollNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departmet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookIssueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookReturnDate)
+            </td>
+            <td>
+
+                <b>@Html.DisplayFor(modelItem => item.Book.BookName)</b>
+            </td>
+            <td>
+                <button><a asp-action="Edit" asp-route-id="@item.Id">Return Book</a> </button>
+                
+                 <button><a asp-action="Details" asp-route-id="@item.Id">Details</a> </button>
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
