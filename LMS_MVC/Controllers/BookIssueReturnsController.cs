@@ -196,8 +196,10 @@ namespace LMS_MVC.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Id,RollNo,Name,Departmet,BookIssueDate,BookReturnDate,BookID")] BookIssueReturn bookIssueReturn)
         {
             int remqty = _context.Book.Where(b => b.BookId == bookIssueReturn.BookID).Select(b => b.RemainingQuantity).FirstOrDefault();
-           
-            bool timeDifference=bookIssueReturn.ActualReturnDate<bookIssueReturn.BookReturnDate;
+
+         
+
+            int timeDifference=Convert.ToInt32( bookIssueReturn.ActualReturnDate-bookIssueReturn.BookReturnDate);
 
             if (id != bookIssueReturn.Id)
             {
@@ -206,6 +208,16 @@ namespace LMS_MVC.Controllers
 
             if (ModelState.IsValid)
             {
+                if (timeDifference>14)
+                {
+                    string errormsg = "Exceeded 14 days";
+
+                    ViewBag.error = true;
+                    bool iserror = true;
+
+                    ViewBag.ErrorMessage = errormsg;
+                    return View();
+                }
                 try
                 {
                     remqty = remqty + 1;

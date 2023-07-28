@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.BookName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BookName)
+           @Html.DisplayFor(model => model.BookName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.AuthorName)
@@ -63,7 +63,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="BookId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
+        <a asp-action="Index" class="btn btn-primary">Back to List</a>
     </form>
 </div>

@@ -6,9 +6,9 @@
 
 <h5> Book Details</h5>
 
-<button class="edit-button">
-<a asp-action="Create">New Entry</a>
-</button>
+
+<a asp-action="Create" class="btn btn-primary" >New Entry</a>
+
 
 <table class="table" >
     <thead>
@@ -68,9 +68,9 @@
                 @Html.DisplayFor(modelItem => item.RemainingQuantity)
             </td>
            <td>
-               <button class="edit-button"> <a class="btn-edit" asp-action="Edit" asp-route-id="@item.BookId">Edit</a> </button>
-               <button class="edit-button"> <a class="btn-details" asp-action="Details" asp-route-id="@item.BookId">Details</a> </button>
-               <button class="edit-button"> <a class="btn-delete" asp-action="Delete" asp-route-id="@item.BookId">Delete</a></button>
+                <a  asp-action="Edit" asp-route-id="@item.BookId"  >Update</a> 
+               <a  asp-action="Details" asp-route-id="@item.BookId"  >Detail</a> 
+              <a  asp-action="Delete" asp-route-id="@item.BookId"  >Delete</a>
             </td>
         </tr>
 }

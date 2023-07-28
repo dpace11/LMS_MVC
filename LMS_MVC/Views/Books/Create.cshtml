@@ -65,16 +65,19 @@ ViewData["Title"] = "Create";
             <span asp-validation-for="RemainingQuantity" class="text-danger"></span></td></tr>
         </div>
         
-            </table >
+        </table >
+
+
             <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary" />
+            <input type="submit" value="Enter New" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-primary" >Back to List</a>
         </div>
     </form>
 </div>
 </div>
-
+<br />
 <div>
-<a asp-action="Index">Back to List</a>
+
 </div>
 
 @section Scripts {

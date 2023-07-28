@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>Student</h4>
+
+<h4>Register Student</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -53,8 +53,9 @@
                 <input asp-for="StudentEmail" class="form-control" />
                 <span asp-validation-for="StudentEmail" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Register" class="btn btn-primary" />
             </div>
 
             @if( ViewBag.error = true)
@@ -66,8 +67,8 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="form-group">
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
 </div>
 
 @section Scripts {

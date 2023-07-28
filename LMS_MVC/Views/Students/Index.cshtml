@@ -7,7 +7,7 @@
 <h5>Student Details</h5>
 
 <p>
-    <button><a asp-action="Create">New Student Entry</a></button>
+    <a asp-action="Create" class="btn btn-primary">New Student Entry</a>
    @* <a asp-action="ViewAll">View All Student</a>*@
 </p>
 <table class="table">
@@ -56,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.StudentEmail)
             </td>
             <td>
-               <button><a asp-action="Edit" asp-route-id="@item.StudentID">Edit</a></button> 
-               <button> <a asp-action="Details" asp-route-id="@item.StudentID">Details</a> </button>
-               <button> <a asp-action="Delete" asp-route-id="@item.StudentID">Delete</a></button>
+               <a asp-action="Edit" asp-route-id="@item.StudentID" class="btn btn-primary">Edit</a> 
+               <a asp-action="Details" asp-route-id="@item.StudentID" class="btn btn-primary">Details</a> 
+                <a asp-action="Delete" asp-route-id="@item.StudentID" class="btn btn-primary">Delete</a>
             </td>
         </tr>
 }

@@ -11,57 +11,62 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table width="750px;">
+           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="BookId" />
             <div class="form-group">
-                <label asp-for="BookName" class="control-label"></label>
-                <input asp-for="BookName" class="form-control" />
-                <span asp-validation-for="BookName" class="text-danger"></span>
+              <tr >
+                  <td><label asp-for="BookName" class="control-label"></label></td>
+               <td><input asp-for="BookName" class="form-control" />
+                <span asp-validation-for="BookName" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                <label asp-for="AuthorName" class="control-label"></label>
-                <input asp-for="AuthorName" class="form-control" />
-                <span asp-validation-for="AuthorName" class="text-danger"></span>
+              <tr>  <td><label asp-for="AuthorName" class="control-label"></label></td>
+                <td><input asp-for="AuthorName" class="form-control" />
+                <span asp-validation-for="AuthorName" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                <label asp-for="PublicationName" class="control-label"></label>
-                <input asp-for="PublicationName" class="form-control" />
-                <span asp-validation-for="PublicationName" class="text-danger"></span>
+                <tr>  <td> <label asp-for="PublicationName" class="control-label"></label></td>
+                <td> <input asp-for="PublicationName" class="form-control" />
+                <span asp-validation-for="PublicationName" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
+                <tr>  <td> <label asp-for="Price" class="control-label"></label></td>
+               <td> <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                <label asp-for="PurchaseDate" class="control-label"></label>
-                <input asp-for="PurchaseDate" class="form-control" />
-                <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+                <tr>  <td> <label asp-for="PurchaseDate" class="control-label"></label></td>
+               <td> <input asp-for="PurchaseDate" class="form-control" />
+                <span asp-validation-for="PurchaseDate" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" class="form-control" />
-                <span asp-validation-for="Quantity" class="text-danger"></span>
+               <tr>  <td>  <label asp-for="Quantity" class="control-label"></label></td>
+               <td> <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                <label asp-for="BookLocation" class="control-label"></label>
-                <input asp-for="BookLocation" class="form-control" />
-                <span asp-validation-for="BookLocation" class="text-danger"></span>
+                <tr>  <td> <label asp-for="BookLocation" class="control-label"></label></td>
+               <td> <input asp-for="BookLocation" class="form-control" />
+                <span asp-validation-for="BookLocation" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                <label asp-for="RemainingQuantity" class="control-label"></label>
-                <input asp-for="RemainingQuantity" class="form-control" />
-                <span asp-validation-for="RemainingQuantity" class="text-danger"></span>
+                <tr>  <td> <label asp-for="RemainingQuantity" class="control-label"></label></td>
+               <td> <input asp-for="RemainingQuantity" class="form-control" />
+                <span asp-validation-for="RemainingQuantity" class="text-danger"></span></td></tr>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <tr>  <td> <input type="submit" value="Update" class="btn btn-primary" />
+                 <a asp-action="Index" class="btn btn-primary">Back to List</a></td></tr>
             </div>
+            </table>
         </form>
     </div>
 </div>
-
+<br />
 <div>
-    <a asp-action="Index">Back to List</a>
+    
 </div>
 
 @section Scripts {

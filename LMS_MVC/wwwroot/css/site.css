@@ -1,4 +1,4 @@
-html {
+/*html {
   font-size: 14px;
 }
 
@@ -18,5 +18,174 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+
+    background-image: url('../Content/images/library.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
+
+*/
+/* Set the base font size */
+/*html {
+    font-size: 14px;
+}*/
+
+/* Media query for larger screens */
+/*@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}*/
+
+/* Focus styles for buttons, form controls, and links */
+/*.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}*/
+
+/* Set the background image for the body */
+/*html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-image: url('../Content/images/library.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}*/
+
+/* Additional Styles to make the CSS more attractive */
+/*header {
+    background-color: #258cfb;
+    padding: 10px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+        padding: 5px 10px;
+        transition: background-color 0.3s ease;
+    }
+
+.container {
+    padding-top: 20px;
+}
+
+h1 {
+    color: #258cfb;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #258cfb;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}*/
+
+
+/* Set the base font size */
+/*html {
+    font-size: 14px;
+}*/
+
+/* Media query for larger screens */
+/*@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}*/
+
+/* Focus styles for buttons, form controls, and links */
+/*.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}*/
+
+/* Set the background image for the body */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-image: url('../Content/images/library.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Additional Styles to make the CSS more attractive */
+header {
+    background-color: #258cfb;
+    padding: 10px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: rosybrown;
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+    /* Hover effect for navbar links */
+    .navbar-nav .nav-link:hover {
+        color: #f8f9fa; /* Change to the desired hover color */
+        background-color: #258cfb; /* Change to the desired hover background color */
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+
+.container {
+    padding-top: 20px;
+}
+
+h1 {
+    color: #258cfb;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #258cfb;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+

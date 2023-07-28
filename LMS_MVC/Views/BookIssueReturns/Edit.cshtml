@@ -48,20 +48,24 @@
                 <select asp-for="BookID" class="form-control" asp-items="ViewBag.BookID" readonly ></select>
                 <span asp-validation-for="BookID" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Return Book" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Back to List</a>
             </div>
+
              <h7> 
                 @if( ViewBag.error = true)
             {
              
                <h4>@ViewBag.ErrorMessage</h4>
-            }</h7>
+            }
+            </h7>
         </form>
     </div>
 </div>
 
 <div>
-   <button> <a asp-action="Index">Back to List</a></button>
+  
 </div>
 

@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>BookIssueReturn</h4>
+
+<h4>Issue Book to Student</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -50,21 +50,25 @@
                 <label asp-for="BookID" class="control-label"></label>
                 <select asp-for="BookID" class ="form-control" asp-items="ViewBag.BookID"></select>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Issue " class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Back to List</a>
             </div>
             <h7> 
-                @if( ViewBag.error = true)
+                 @if( ViewBag.error = true)
             {
              
                <h4>@ViewBag.ErrorMessage</h4>
-            }</h7>
+            }
+              
+               </h7>
             
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    
 </div>
 

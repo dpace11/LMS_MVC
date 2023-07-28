@@ -43,15 +43,17 @@
                 <input asp-for="StudentEmail" class="form-control" />
                 <span asp-validation-for="StudentEmail" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                 <a asp-action="Index" class="btn btn-primary">Back to List</a>
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
-   <button> <a asp-action="Index">Back to List</a></button>
+ 
 </div>
 
 @section Scripts {
