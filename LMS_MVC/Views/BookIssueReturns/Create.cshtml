@@ -56,12 +56,20 @@
                 <a asp-action="Index" class="btn btn-primary">Back to List</a>
             </div>
             <h7> 
-                 @if( ViewBag.error = true)
+              @*   @if( ViewBag.error = true)
+                    {
+                        <script>
+                            var errormessage="@ViewBag.ErrorMessage";
+                            alert(errormessage);
+               
+                       </script>
+                    }*@
+                    @if( ViewBag.error = true)
             {
              
                <h4>@ViewBag.ErrorMessage</h4>
             }
-              
+
                </h7>
             
         </form>
