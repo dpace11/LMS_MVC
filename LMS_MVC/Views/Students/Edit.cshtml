@@ -16,7 +16,7 @@
             <input type="hidden" asp-for="StudentID" />
             <div class="form-group">
                <tr><td> <label asp-for="StudentRollNo" class="control-label"></label></td><td>
-                <input asp-for="StudentRollNo" class="form-control" />
+                <input asp-for="StudentRollNo" class="form-control" readonly />
                 <span asp-validation-for="StudentRollNo" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
@@ -46,7 +46,7 @@
             </div>
             <br />
             <div class="form-group">
-               <tr><td> <input type="submit" value="Save" class="btn btn-primary" />
+               <tr><td><input type="submit" value="Save" class="btn btn-primary" />&ensp;
                  <a asp-action="Index" class="btn btn-primary">Back to List</a></td></tr>
             </div>
             </table>
@@ -55,7 +55,7 @@
 </div>
 <br />
 <div>
- 
+  
 </div>
 
 @section Scripts {

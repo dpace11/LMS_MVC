@@ -1,0 +1,54 @@
+﻿@model LMS_MVC.Models.Membership
+
+@{
+    ViewData["Title"] = "Renew";
+}
+
+
+<h4> Renew Membership Details</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Renew">
+            <table width="500px">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <tr><td><strong><label asp-for="StudentRollNo" class="control-label" ></label></strong></td><td>
+                <input asp-for="StudentRollNo" class="form-control" readonly />
+                <span asp-validation-for="StudentRollNo" class="text-danger"></span></td></tr>
+            </div>
+
+            <div class="form-group">
+               <tr><td><strong> <label asp-for="FullName" class="control-label"></label></strong></td><td>
+                <input asp-for="FullName" class="form-control" readonly/>
+                <span asp-validation-for="FullName" class="text-danger"></span></td></tr>
+            </div>
+
+            <div class="form-group">
+               <tr><td><strong> <label asp-for="MembershipIssueDate" class="control-label"></label></strong></td><td>
+                <input asp-for="MembershipIssueDate" class="form-control" />
+                <span asp-validation-for="MembershipIssueDate" class="text-danger"></span></td></tr>
+            </div>
+
+          @*  <div class="form-group">
+                <tr><td><strong><label asp-for="MembershipEndDate" class="control-label"></label></strong></td><td>
+                <input asp-for="MembershipEndDate" class="form-control" />
+                <span asp-validation-for="MembershipEndDate" class="text-danger"></span></td></tr>
+            </div>*@
+
+            <div class="form-group">
+               <tr><td> <input type="submit" value="Renew" class="btn btn-primary" /></td><td>
+                 <a asp-action="Index" class="btn btn-primary">Back to List</a></td></tr>
+            </div>
+
+            </table>
+        </form>
+    </div>
+</div>
+
+<div>
+   
+</div>
+

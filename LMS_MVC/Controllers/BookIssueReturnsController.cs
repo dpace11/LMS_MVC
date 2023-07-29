@@ -83,40 +83,56 @@ namespace LMS_MVC.Controllers
             var roll_name_dept_match = _context
                                             .Student
                                             .Where(s => s.StudentRollNo == bookIssueReturn.RollNo && s.StudentName == bookIssueReturn.Name && s.Department == bookIssueReturn.Departmet).FirstOrDefault();
-                                                        
+
+            var membership_exist = _context.Membership.Where(m => m.StudentRollNo == bookIssueReturn.RollNo).FirstOrDefault();
 
             if (rollnoexist)
             {
-                if (roll_name_dept_match !=null )
+                if (membership_exist != null)
                 {
-                    if (remaining_book_qty > 1)
+                    if (roll_name_dept_match != null)
                     {
-                        if (student_book_count <= 4)
+                        if (remaining_book_qty > 1)
                         {
-
-                            if (duplicate_book == null)
+                            if (student_book_count <= 4)
                             {
-                                remaining_book_qty = remaining_book_qty - 1;
 
-                                var update_book_Qty = _context.Book.Where(b => b.BookId == bookIssueReturn.BookID);
-                                foreach (var r in update_book_Qty)
+                                if (duplicate_book == null)
                                 {
-                                    r.RemainingQuantity = remaining_book_qty;
-                                }
+                                    remaining_book_qty = remaining_book_qty - 1;
 
-                                if (ModelState.IsValid)
-                                {
-                                    bookIssueReturn.ActualReturnDate = bookIssueReturn.BookIssueDate.AddDays(14);
-                                    _context.Add(bookIssueReturn);
-                                    await _context.SaveChangesAsync();
-                                    return RedirectToAction(nameof(Index));
+                                    var update_book_Qty = _context.Book.Where(b => b.BookId == bookIssueReturn.BookID);
+                                    foreach (var r in update_book_Qty)
+                                    {
+                                        r.RemainingQuantity = remaining_book_qty;
+                                    }
+
+                                    if (ModelState.IsValid)
+                                    {
+                                        bookIssueReturn.ActualReturnDate = bookIssueReturn.BookIssueDate.AddDays(14);
+
+                                        _context.Add(bookIssueReturn);
+                                        await _context.SaveChangesAsync();
+                                        return RedirectToAction(nameof(Index));
+                                    }
+                                    ViewData["BookID"] = new SelectList(_context.Book, "BookId", "BookName", bookIssueReturn.BookID);
+                                    return View(bookIssueReturn);
                                 }
-                                ViewData["BookID"] = new SelectList(_context.Book, "BookId", "BookName", bookIssueReturn.BookID);
-                                return View(bookIssueReturn);
+                                else
+                                {
+                                    errormsg = "this book is aleady issued to " + bookIssueReturn.RollNo;
+
+                                    ViewBag.error = true;
+                                    bool iserror = true;
+
+                                    ViewBag.ErrorMessage = errormsg;
+                                    return View();
+                                }
                             }
                             else
                             {
-                                errormsg = "this book is aleady issued to " + bookIssueReturn.RollNo;
+
+                                errormsg = "Exceeded the limit of 5 books per student";
 
                                 ViewBag.error = true;
                                 bool iserror = true;
@@ -127,8 +143,7 @@ namespace LMS_MVC.Controllers
                         }
                         else
                         {
-
-                            errormsg = "Exceeded the limit of 5 books per student";
+                            errormsg = "Book Out Of Stock.Only Availabe For Reading in Library";
 
                             ViewBag.error = true;
                             bool iserror = true;
@@ -139,7 +154,7 @@ namespace LMS_MVC.Controllers
                     }
                     else
                     {
-                        errormsg = "Book Out Of Stock.Only Availabe For Reading in Library";
+                        errormsg = "Roll No, Name, Department Missmatch. Enter correct details";
 
                         ViewBag.error = true;
                         bool iserror = true;
@@ -150,7 +165,7 @@ namespace LMS_MVC.Controllers
                 }
                 else
                 {
-                    errormsg = "Roll No, Name, Department Missmatch";
+                    errormsg = bookIssueReturn.RollNo+" is not a member of library. Access membership first to issue book";
 
                     ViewBag.error = true;
                     bool iserror = true;
@@ -199,7 +214,7 @@ namespace LMS_MVC.Controllers
 
          
 
-            int timeDifference=Convert.ToInt32( bookIssueReturn.ActualReturnDate-bookIssueReturn.BookReturnDate);
+            //int timeDifference=Convert.ToInt32( bookIssueReturn.ActualReturnDate-bookIssueReturn.BookReturnDate);
 
             if (id != bookIssueReturn.Id)
             {
@@ -208,7 +223,7 @@ namespace LMS_MVC.Controllers
 
             if (ModelState.IsValid)
             {
-                if (timeDifference>14)
+               /* if (timeDifference>14)
                 {
                     string errormsg = "Exceeded 14 days";
 
@@ -217,9 +232,10 @@ namespace LMS_MVC.Controllers
 
                     ViewBag.ErrorMessage = errormsg;
                     return View();
-                }
+                }*/
                 try
                 {
+                    bookIssueReturn.BookReturnDate = DateTime.Now;//////////+++++++++
                     remqty = remqty + 1;
 
                     var update_book_Qty = _context.Book.Where(b => b.BookId == bookIssueReturn.BookID);

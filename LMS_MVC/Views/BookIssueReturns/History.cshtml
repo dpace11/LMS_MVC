@@ -8,7 +8,8 @@
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Issue Book</a>&nbsp;&nbsp;&nbsp;
-    <a asp-action="History" class="btn btn-primary">View History</a>
+    <a asp-action="History" class="btn btn-primary">View History</a>&nbsp;&nbsp;&nbsp;
+    <a asp-action="Index" class="btn btn-primary">Go Back</a>
 </p>
 <table class="table">
     <thead>
@@ -28,6 +29,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.BookReturnDate)
             </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Book)
             </th>
@@ -52,6 +54,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.BookReturnDate)
             </td>
+          
             <td>
 
                 <b>@Html.DisplayFor(modelItem => item.Book.BookName)</b>

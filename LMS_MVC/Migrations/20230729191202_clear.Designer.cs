@@ -4,6 +4,7 @@ using LMS_MVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS_MVC.Migrations
 {
     [DbContext(typeof(LMS_MVCContext))]
-    partial class LMS_MVCContextModelSnapshot : ModelSnapshot
+    [Migration("20230729191202_clear")]
+    partial class clear
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +83,7 @@ namespace LMS_MVC.Migrations
                     b.Property<DateTime>("BookIssueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("BookReturnDate")
+                    b.Property<DateTime>("BookReturnDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Departmet")

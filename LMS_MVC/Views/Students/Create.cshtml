@@ -13,19 +13,26 @@
         <form asp-action="Create">
             <table width="700px;" >
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
+            <tr>
+                <td colspan="2">
+                    @if( ViewBag.error = true)
+                    {             
+                       <h4>@ViewBag.ErrorMessage</h4>
+                    }
+                </td>
+            </tr>
             <div class="form-group">
-                 <tr><td><label asp-for="StudentRollNo" class="control-label"></label></td><td>
+                 <tr><td><strong><label asp-for="StudentRollNo" class="control-label"></label></td></strong><td>
                 <input asp-for="StudentRollNo" class="form-control" />
                 <span asp-validation-for="StudentRollNo" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                 <tr><td><label asp-for="StudentName" class="control-label"></label></td><td>
+                 <tr><td><strong><label asp-for="StudentName" class="control-label"></label></td></strong><td>
                 <input asp-for="StudentName" class="form-control" />
                 <span asp-validation-for="StudentName" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                <tr><td> <label asp-for="Department" class="control-label"></label></td><td>
+                <tr><td> <strong><label asp-for="Department" class="control-label"></label></td></strong><td>
 
                 <select asp-for="Department" class="form-control">
                     <option>Architecture</option>
@@ -41,38 +48,35 @@
 *@                <span asp-validation-for="Department" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                 <tr><td><label asp-for="Semester" class="control-label"></label></td><td>
+                 <tr><td><strong><label asp-for="Semester" class="control-label"></label></td></strong><td>
                 <input asp-for="Semester" class="form-control" />
                 <span asp-validation-for="Semester" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                 <tr><td><label asp-for="StudentContact" class="control-label"></label></td><td>
+                 <tr><td><strong><label asp-for="StudentContact" class="control-label"></label></td></strong><td>
                 <input asp-for="StudentContact" class="form-control" />
                 <span asp-validation-for="StudentContact" class="text-danger"></span></td></tr>
             </div>
             <div class="form-group">
-                <tr><td> <label asp-for="StudentEmail" class="control-label"></label></td><td>
+                <tr><td> <strong><label asp-for="StudentEmail" class="control-label"></label></td></strong><td>
                 <input asp-for="StudentEmail" class="form-control" />
                 <span asp-validation-for="StudentEmail" class="text-danger"></span></td></tr>
             </div>
             <br />
             <div class="form-group">
-                <tr><td> <input type="submit" value="Register" class="btn btn-primary" />
-
-                     <a asp-action="Index" class="btn btn-primary">Back to List</a></td></tr>
+                <tr><td> </td></tr>
             </div>
 
-            @if( ViewBag.error = true)
-            {
-             
-               <h4>@ViewBag.ErrorMessage</h4>
-            }
+          
             </table>
         </form>
     </div>
 </div>
-
+<br />
 <div class="form-group">
+    <input type="submit" value="Register" class="btn btn-primary" /> &ensp;
+
+                     <a asp-action="Index" class="btn btn-primary">Back to List</a>
    
 </div>
 

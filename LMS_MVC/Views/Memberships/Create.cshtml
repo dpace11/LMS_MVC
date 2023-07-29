@@ -1,0 +1,68 @@
+﻿@model LMS_MVC.Models.Membership
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>New Membership Data Entry</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <table width="500px;">
+                <tr>
+                     <td colspan="2">
+                        @if( ViewBag.error = true)
+                        {
+             
+                            <h4>@ViewBag.ErrorMessage</h4>
+                        }
+                    </td>
+                 </tr>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <tr><td><strong>
+                <label asp-for="StudentRollNo" class="control-label"></label></td><td>
+                <input asp-for="StudentRollNo" class="form-control" />
+                <span asp-validation-for="StudentRollNo" class="text-danger"></span></td></tr>
+            </div>
+
+
+            <div class="form-group">
+                <tr><td><strong><label asp-for="FullName" class="control-label"></label></td><td>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span></td></tr>
+            </div>
+
+
+            <div class="form-group">
+                <tr><td><strong><label asp-for="MembershipIssueDate" class="control-label"></label></td><td>
+                <input asp-for="MembershipIssueDate" class="form-control" />
+                <span asp-validation-for="MembershipIssueDate" class="text-danger"></span></td></tr>
+            </div>
+
+
+         @*   <div class="form-group">
+                <tr><td><strong><label asp-for="MembershipEndDate" class="control-label"></label></td><td>
+                <input asp-for="MembershipEndDate" class="form-control" />
+                <span asp-validation-for="MembershipEndDate" class="text-danger"></span></td></tr>
+            </div>*@
+
+
+            <div class="form-group">
+                <tr><td></td></tr>
+               <tr><td> <input type="submit" value="Create" class="btn btn-primary" /></td><td>
+                    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+               </td></tr>
+            </div>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div>
+   
+</div>
+

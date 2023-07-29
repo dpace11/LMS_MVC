@@ -19,5 +19,7 @@ namespace LMS_MVC.Data
         public DbSet<LMS_MVC.Models.Book> Book { get; set; } = default!;
 
         public DbSet<LMS_MVC.Models.BookIssueReturn> BookIssue { get; set; } = default!;
+
+        public DbSet<LMS_MVC.Models.Membership > Membership { get; set; } = default!;
     }
 }

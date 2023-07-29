@@ -1,0 +1,55 @@
+﻿@model IEnumerable<LMS_MVC.Models.Membership>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<p>
+    <a asp-action="Create"  class="btn btn-primary" >New Member Entry</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentRollNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MembershipIssueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MembershipEndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentRollNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MembershipIssueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MembershipEndDate)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> *@
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Delete</a>
+                 <a asp-action="Renew" asp-route-id="@item.Id" class="btn btn-primary">Renew</a>
+           
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

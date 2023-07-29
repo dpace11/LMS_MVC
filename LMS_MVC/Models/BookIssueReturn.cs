@@ -12,6 +12,7 @@ namespace LMS_MVC.Models
 
 
         [Display(Name = "Roll No")]
+        [Range(750101, 750599, ErrorMessage = "Roll no shoud be within 7501XX--7505XX")]
         [Required]
         public int RollNo { get; set; }
 
@@ -30,12 +31,13 @@ namespace LMS_MVC.Models
        
         [DataType(DataType.Date)]
         [Display(Name ="Deadline")]
-        public DateTime ActualReturnDate { get; set; }
+        public DateTime ActualReturnDate { get; set; }  //deadline date
 
 
         [DataType(DataType.Date)]
         [Display(Name = "Returned Date")]
-        public DateTime? BookReturnDate { get; set; }
+       
+        public DateTime? BookReturnDate { get; set; }       //studdent le return gareko date
 
        // public string StdBookReturnDate { get; set; }
 

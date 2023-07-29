@@ -22,15 +22,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.PublicationName)
             </th>
-            <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
+            </th>*@
+            @*<th>
                 @Html.DisplayNameFor(model => model.PurchaseDate)
-            </th>
-            <th>
+            </th>*@
+           @* <th>
                 @Html.DisplayNameFor(model => model.Quantity)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.BookLocation)
             </th>
@@ -52,7 +52,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PublicationName)
             </td>
-            <td>
+           @* <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
@@ -60,7 +60,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.BookLocation)
             </td>
@@ -68,9 +68,9 @@
                 @Html.DisplayFor(modelItem => item.RemainingQuantity)
             </td>
            <td>
-                <a  asp-action="Edit" asp-route-id="@item.BookId"  >Update</a> 
-               <a  asp-action="Details" asp-route-id="@item.BookId"  >Detail</a> 
-              <a  asp-action="Delete" asp-route-id="@item.BookId"  >Delete</a>
+                <a  asp-action="Edit" asp-route-id="@item.BookId" class="btn btn-primary" >Update</a> 
+               <a  asp-action="Details" asp-route-id="@item.BookId" class="btn btn-primary" >Detail</a> 
+              <a  asp-action="Delete" asp-route-id="@item.BookId"  class="btn btn-primary">Delete</a>
             </td>
         </tr>
 }

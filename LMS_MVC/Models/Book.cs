@@ -40,11 +40,11 @@ namespace LMS_MVC.Models
         public int Quantity { get; set; }
 
 
-        [Display(Name = "Book Loacation In Library")]
+        [Display(Name = "Book Loacation")]
         [Required]
         public string BookLocation { get; set; }
 
-        [Display(Name = "Remaining Quantity in Library")]
+        [Display(Name = "Remaining Quantity")]
         [Required]
         public int RemainingQuantity { get; set; }
     }
