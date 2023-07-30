@@ -23,7 +23,7 @@ namespace LMS_MVC.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.Student != null ? 
-                          View(await _context.Student.ToListAsync()) :
+                          View(await _context.Student.OrderBy(s=>s.StudentRollNo).ToListAsync()) :
                           Problem("Entity set 'LMS_MVCContext.Student'  is null.");
         }
 

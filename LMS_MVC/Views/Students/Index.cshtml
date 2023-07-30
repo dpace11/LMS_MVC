@@ -8,8 +8,30 @@
 
 <p>
     <a asp-action="Create" class="btn btn-primary">New Student Entry</a>
-   @* <a asp-action="ViewAll">View All Student</a>*@
+  &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+    &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+     &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; 
+   
+    &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+    &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+    <input type="text" id="searchInput" placeholder="Search by Name" >
 </p>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () 
+        {
+            $("#searchInput").on("keyup", function () {
+                var searchText = $(this).val().toLowerCase();
+                $("tbody tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1)
+                });
+            });
+        });
+    </script>
+}
+
 <table class="table">
     <thead>
         <tr>

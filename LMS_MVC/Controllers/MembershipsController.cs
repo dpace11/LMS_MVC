@@ -19,7 +19,7 @@ namespace LMS_MVC.Controllers
         public async Task<IActionResult> Index()
         {
             return _context.Membership != null ?
-                        View(await _context.Membership.ToListAsync()) :
+                        View(await _context.Membership.OrderBy(m=>m.MembershipIssueDate).ToListAsync()) :
                         Problem("Entity set 'LMS_MVCContext.Membership'  is null.");
         }
 
@@ -208,7 +208,6 @@ namespace LMS_MVC.Controllers
             return (_context.Membership?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        // GET: Memberships/Edit/5
         public async Task<IActionResult> Renew(int? id)
         {
             if (id == null || _context.Membership == null)
@@ -224,9 +223,7 @@ namespace LMS_MVC.Controllers
             return View(membership);
         }
 
-        // POST: Memberships/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Renew(int id, [Bind("Id,StudentRollNo,FullName,MembershipIssueDate,MembershipEndDate")] Membership membership)
