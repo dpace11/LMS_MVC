@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LMS_MVC.Models
 {
@@ -47,5 +49,7 @@ namespace LMS_MVC.Models
         [Display(Name = "Remaining Quantity")]
         [Required]
         public int RemainingQuantity { get; set; }
+
+
     }
 }

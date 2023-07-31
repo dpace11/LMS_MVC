@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using LMS_MVC.Data;
+using LMS_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using LMS_MVC.Data;
-using LMS_MVC.Models;
 
 namespace LMS_MVC.Controllers
 {
     public class BookIssueReturnsController : Controller
     {
-       
+
         private readonly LMS_MVCContext _context;
 
         public BookIssueReturnsController(LMS_MVCContext context)
@@ -20,12 +16,12 @@ namespace LMS_MVC.Controllers
             _context = context;
             BookIssueReturn bookIssueReturn = new();
             Student student = new();
-           
+
         }
 
         public async Task<IActionResult> Index()
         {
-            var lMS_MVCContext = _context.BookIssue.Include(b => b.Book).Where(b=>b.BookReturnDate==null);
+            var lMS_MVCContext = _context.BookIssue.Include(b => b.Book).Where(b => b.BookReturnDate == null);
             return View(await lMS_MVCContext.ToListAsync());
         }
 
@@ -63,18 +59,18 @@ namespace LMS_MVC.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,RollNo,Name,Departmet,BookIssueDate,BookID")] BookIssueReturn bookIssueReturn)
         {
-            string errormsg;            
+            string errormsg;
 
             var duplicate_book = _context.BookIssue.Where(b => b.RollNo == bookIssueReturn.RollNo && b.BookID == bookIssueReturn.BookID && b.BookReturnDate == null).FirstOrDefault();
-                     
+
             int remaining_book_qty = _context.Book.Where(b => b.BookId == bookIssueReturn.BookID).Select(b => b.RemainingQuantity).FirstOrDefault();
 
-            int student_book_count = _context.BookIssue.Where(b => b.RollNo == bookIssueReturn.RollNo && b.BookReturnDate==null).Count();            
+            int student_book_count = _context.BookIssue.Where(b => b.RollNo == bookIssueReturn.RollNo && b.BookReturnDate == null).Count();
 
             var rollnoexist = _context.Student.Any(m => m.StudentRollNo == bookIssueReturn.RollNo);
 
@@ -82,7 +78,7 @@ namespace LMS_MVC.Controllers
 
             var membership_exist = _context.Membership.Where(m => m.StudentRollNo == bookIssueReturn.RollNo).FirstOrDefault();
 
-           //check if book deadline day exceeds membership deadline date.
+            //check if book deadline day exceeds membership deadline date.
             var actual_return_date = bookIssueReturn.BookIssueDate.AddDays(14);
 
             var membership_deadline = _context.Membership.Where(m => m.StudentRollNo == bookIssueReturn.RollNo).Select(m => m.MembershipEndDate).FirstOrDefault();
@@ -182,7 +178,7 @@ namespace LMS_MVC.Controllers
                 }
                 else
                 {
-                    errormsg = bookIssueReturn.RollNo+" is not a member of library. Access membership first to issue book";
+                    errormsg = bookIssueReturn.RollNo + " is not a member of library. Access membership first to issue book";
 
                     ViewBag.error = true;
                     bool iserror = true;
@@ -229,7 +225,7 @@ namespace LMS_MVC.Controllers
         {
             int remqty = _context.Book.Where(b => b.BookId == bookIssueReturn.BookID).Select(b => b.RemainingQuantity).FirstOrDefault();
 
-         
+
 
             //int timeDifference=Convert.ToInt32( bookIssueReturn.ActualReturnDate-bookIssueReturn.BookReturnDate);
 
@@ -240,7 +236,7 @@ namespace LMS_MVC.Controllers
 
             if (ModelState.IsValid)
             {
-             
+
                 try
                 {
                     bookIssueReturn.BookReturnDate = DateTime.Now;//////////+++++++++
@@ -256,7 +252,7 @@ namespace LMS_MVC.Controllers
                     await _context.SaveChangesAsync();
 
 
-                   
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -308,14 +304,119 @@ namespace LMS_MVC.Controllers
             {
                 _context.BookIssue.Remove(bookIssueReturn);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BookIssueReturnExists(int id)
         {
-          return (_context.BookIssue?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.BookIssue?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+
+
+
+
+        public async Task<IActionResult> Extend(int? id)
+        {
+            if (id == null || _context.BookIssue == null)
+            {
+                return NotFound();
+            }
+
+            var bookIssueReturn = await _context.BookIssue.FindAsync(id);
+            if (bookIssueReturn == null)
+            {
+                return NotFound();
+            }
+            ViewData["BookID"] = new SelectList(_context.Book, "BookId", "BookName", bookIssueReturn.BookID);
+            return View(bookIssueReturn);
+        }
+
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Extend(int id, [Bind("Id,RollNo,Name,Departmet,BookIssueDate,BookReturnDate,BookID")] BookIssueReturn bookIssueReturn)
+        {
+            
+
+            var old_issue_date = _context.BookIssue.Where(b => b.Id == bookIssueReturn.Id).Select(b => b.BookIssueDate).SingleOrDefault();
+
+            var old_deadline_date=_context.BookIssue.Where(b => b.Id == bookIssueReturn.Id).Select(b => b.ActualReturnDate).SingleOrDefault();
+
+            var date_diff = (int)(bookIssueReturn.BookIssueDate - old_issue_date).TotalDays;
+
+            var deadline_diff_check= (int)(bookIssueReturn.BookIssueDate - old_deadline_date).TotalDays;
+
+            if (id != bookIssueReturn.Id)
+            {
+                return NotFound();
+            }
+
+            if (date_diff > 0)
+            {
+             /*   if (deadline_diff_check < 4)
+                {
+*/
+                    if (ModelState.IsValid)
+                    {
+
+                        try
+                        {
+
+
+                            bookIssueReturn.ActualReturnDate = bookIssueReturn.BookIssueDate.AddDays(14);
+                            _context.Update(bookIssueReturn);
+                            await _context.SaveChangesAsync();
+
+
+
+                        }
+                        catch (DbUpdateConcurrencyException)
+                        {
+                            if (!BookIssueReturnExists(bookIssueReturn.Id))
+                            {
+                                return NotFound();
+                            }
+                            else
+                            {
+                                throw;
+                            }
+                        }
+                        return RedirectToAction(nameof(Index));
+                    }
+                /*
+            }
+            else
+            {
+                string errormsg = "Book cannot be renewed if more than 4 days till deadline";
+
+                ViewBag.error = true;
+                bool iserror = true;
+
+                ViewBag.ErrorMessage = errormsg;
+                return View();
+            }*/
+            }
+
+            else
+
+            {
+               string errormsg = "Book renew date cannot be smaller than old issue date";
+
+                ViewBag.error = true;
+                bool iserror = true;
+
+                ViewBag.ErrorMessage = errormsg;
+                return View();
+            }
+
+            ViewData["BookID"] = new SelectList(_context.Book, "BookId", "AuthorName", bookIssueReturn.BookID);
+            return View(bookIssueReturn);
+        }
+
     }
 }
