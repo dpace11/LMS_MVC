@@ -1,0 +1,64 @@
+﻿@model LMS_MVC.Models.ViewModel.ImageCreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<h4>Author Details</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <table width="550px;">
+                <tr>
+                <td colspan="2">
+                    @if( ViewBag.error = true)
+                        {             
+                           <h4>@ViewBag.ErrorMessage</h4>
+                        }
+                    </td>
+                </tr>
+            <div class="form-group">
+                
+                <tr><td><b><label asp-for="AuthorName" class="control-label"></label></b></td><td>
+                <input asp-for="AuthorName" class="form-control" />
+                <span asp-validation-for="AuthorName" class="text-danger"></span></td></tr>
+            </div>
+            <div class="form-group">
+                <tr><td><b><label asp-for="Address" class="control-label"></label></b></td><td>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span></td></tr>
+            </div>
+            <div class="form-group">
+                <tr><td><b><label asp-for="PhoneNumber" class="control-label"></label></b></td><td>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span></td></tr>
+            </div>
+            <div class="form-group">
+               <tr><td><b> <label asp-for="Email" class="control-label"></label></b></td><td>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span></td></tr>
+            </div>
+            <div class="form-group">
+                <tr><td><b><label asp-for="ImagePath" class="control-label"></label></b></td><td>
+                <input asp-for="ImagePath" class="form-control" type="file" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span></td></tr>
+            </div>
+            <div class="form-group">
+               <tr><td> <input type="submit" value="Save Details" class="btn btn-primary" /></td>
+                    <td><a asp-action="Index" class="btn btn-primary">Back to List</a></td></tr>
+            </div>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div>
+   
+</div>
+

@@ -71,7 +71,8 @@
     <tbody>
 @foreach (var item in Model) {
 
-    int dateDifference = CalculateDateDifference(DateTime.Today, item.ActualReturnDate);
+     int dateDifference = CalculateDateDifference(DateTime.Today, item.ActualReturnDate);
+     //int deadlineDifference = CalculateDateDifference(item.BookIssueDate, item.BookReturnDate);
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.RollNo)
@@ -96,7 +97,7 @@
                 <b>@Html.DisplayFor(modelItem => item.Book.BookName)</b>
             </td>
 
-             @if (dateDifference < 4)
+              @if (dateDifference <4 && dateDifference>0)
                 {
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Return Book</a>

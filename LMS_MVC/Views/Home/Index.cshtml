@@ -2,6 +2,35 @@
     ViewData["Title"] = "Home Page";
 }
 
+<style>
+.box {
+  width: 200px;
+  height: 100px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+  display: inline-block;
+  vertical-align: top;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+  text-align: center; /* Align the text in the center of the box */
+}
+
+.box:hover {
+  background-color: #a8dadc;
+}
+
+.box h6 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.box span {
+  font-weight: normal;
+}
+
+</style>
 <div class="text-center">
     <b><h1 class="display-4">Welcome</h1></b>
     <h1>
@@ -10,4 +39,44 @@
     <h4>
     <p>Click Here To Expand  Your Knowledge. <a class="" asp-area="" asp-controller="Books" asp-action="Index">Click Here</a></p>
     </h4>
+  @* <h6>Total Authors: @ViewBag.TotalAuthors</h6>
+   <h6>Total library student count:@ViewBag.totalafffiliaction</h6>
+    <h6>Total Publications: @ViewBag.TotalPublications</h6>
+ 
+    <h6>Total Book count: @ViewBag.totalbooks</h6>
+    <h6>Total Bookissued: @ViewBag.totalbookissued</h6>
+    <h6>Total Library Members: @ViewBag.totalmembers</h6>
+    *@
+
+
+
+     
+            
+           
 </div>
+<div class="box">
+  <h6>Total Authors: <br /><h4><span>@ViewBag.TotalAuthors</span></h4></h6>
+</div>
+
+<div class="box">
+  <h6>Total library student count:<br /> <h4><span>@ViewBag.totalafffiliaction</span></h4></h6>
+</div>
+
+@*<div class="box">
+  <h6>Total Publications:<br /> <span>@ViewBag.TotalPublications</span></h6>
+</div>*@
+
+
+
+<div class="box">
+  <h6>Total Book count: <br /><h4><span>@ViewBag.totalbooks</span></h4></h6>
+</div>
+
+<div class="box">
+  <h6>Total Book issued: <br /><h4><span>@ViewBag.totalbookissued</span></h4></h6>
+</div>
+
+<div class="box">
+  <h6>Total Library Members: <br /><h4><span>@ViewBag.totalmembers</span></h4></h6>
+</div>
+

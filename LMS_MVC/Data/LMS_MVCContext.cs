@@ -21,5 +21,14 @@ namespace LMS_MVC.Data
         public DbSet<LMS_MVC.Models.BookIssueReturn> BookIssue { get; set; } = default!;
 
         public DbSet<LMS_MVC.Models.Membership > Membership { get; set; } = default!;
+
+        public DbSet<LMS_MVC.Models.Author> Authors { get; set; } = default!;
+
+        public DbSet<LMS_MVC.Models.Publication> Publications { get; set; } = default!;
+
+        public DbSet<Author1> Author1 { get; set; } = default!;     
+
+
+
     }
 }

@@ -1,0 +1,82 @@
+﻿@model IEnumerable<LMS_MVC.Models.Author1>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+
+    &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+    &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+     &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; 
+   
+    &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+    &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+    <input type="text" id="searchInput" placeholder="Search by Name" >
+</p>
+
+@section scripts {
+    <script>
+        $(document).ready(function () 
+        {
+            $("#searchInput").on("keyup", function () {
+                var searchText = $(this).val().toLowerCase();
+                $("tbody tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1)
+                });
+            });
+        });
+    </script>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>   
+
+            <td>
+               <b> @Html.DisplayFor(modelItem => item.AuthorName)</b>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+               <img src="@Html.DisplayFor(modelItem=>item.ImagePath)" height="100px;" width="100px;"  ></img>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-primary">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

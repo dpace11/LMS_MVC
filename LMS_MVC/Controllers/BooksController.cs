@@ -58,11 +58,46 @@ namespace LMS_MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BookId,BookName,AuthorName,PublicationName,Price,PurchaseDate,Quantity,BookLocation,RemainingQuantity")] Book book)
         {
-            if (ModelState.IsValid)
+            var is_author_present = _context.Author1.Any(b => b.AuthorName == book.AuthorName);
+
+            var is_book_already_present = _context.Book.Any(b => b.BookName == book.BookName);
+
+            var is_pub_present = _context.Publications.Any(p => p.PublicationName == book.PublicationName);
+
+            if (!is_book_already_present)
             {
-                _context.Add(book);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                if (is_author_present)
+                {
+                    if (is_pub_present)
+                    {
+                        if (ModelState.IsValid)
+                        {
+                            _context.Add(book);
+                            await _context.SaveChangesAsync();
+                            return RedirectToAction(nameof(Index));
+                        }
+                    }
+                    else
+                    {
+
+                        string errormsg = "Publication name doesnot exist in database. ";
+                        ViewBag.ErrorMessage = errormsg;
+                        return View();
+                    }
+                }
+                else
+                {
+                    string errormsg = "Author name doesnot exist in database. ";
+                    ViewBag.ErrorMessage = errormsg;
+                    return View();
+                }
+            }
+            else
+            {
+                string errormsg = "Book name conflict. Already exist in database ";
+                ViewBag.ErrorMessage = errormsg;
+                return View();
             }
             return View(book);
         }

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<LMS_MVC.Models.Publication>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+     &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+    &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+    &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+     &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+    &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp; &ensp;&ensp;&emsp;&emsp;
+    <input type="text" id="searchInput" placeholder="Search by Name" >
+    @section scripts {
+    <script>
+        $(document).ready(function () 
+        {
+            $("#searchInput").on("keyup", function () {
+                var searchText = $(this).val().toLowerCase();
+                $("tbody tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1)
+                });
+            });
+        });
+    </script>
+}
+
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PublicationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PubAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublicationPhNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+              <b>  @Html.DisplayFor(modelItem => item.PublicationName)</b>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PubAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublicationPhNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID " class="btn btn-primary">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID"class="btn btn-primary">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

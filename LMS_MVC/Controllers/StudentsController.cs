@@ -57,8 +57,7 @@ namespace LMS_MVC.Controllers
         }
 
         // POST: Students/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StudentID,StudentRollNo,StudentName,Department,Semester,StudentContact,StudentEmail")] Student student)
@@ -105,8 +104,6 @@ namespace LMS_MVC.Controllers
         }
 
         // POST: Students/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("StudentID,StudentRollNo,StudentName,Department,Semester,StudentContact,StudentEmail")] Student student)

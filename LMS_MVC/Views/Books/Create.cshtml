@@ -14,7 +14,14 @@ ViewData["Title"] = "Create";
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <table  width="700px;">
        
-           
+           <tr>
+                <td colspan="2">
+                    @if( ViewBag.error = true)
+                    {             
+                       <h4>@ViewBag.ErrorMessage</h4>
+                    }
+                </td>
+            </tr>
            
         <div class="form-group">
             <tr> 
@@ -29,8 +36,8 @@ ViewData["Title"] = "Create";
         <div class="form-group">
             <tr>
                 <td> <label asp-for="AuthorName" class="control-label"></label></td>
-                <td> <input asp-for="AuthorName" class="form-control" /></td>
-                        <span asp-validation-for="AuthorName" class="text-danger"></span>
+                <td> <input asp-for="AuthorName" class="form-control" />
+                        <span asp-validation-for="AuthorName" class="text-danger"></span></td>
             </tr>          
          </div>
 
