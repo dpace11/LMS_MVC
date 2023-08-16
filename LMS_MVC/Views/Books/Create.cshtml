@@ -16,16 +16,27 @@ ViewData["Title"] = "Create";
        
            <tr>
                 <td colspan="2">
-                    @if( ViewBag.error = true)
+                    @if( ViewBag.errorpub == "abc")
                     {             
-                       <h4>@ViewBag.ErrorMessage</h4>
+                       <h4>@ViewBag.ErrorMessagePub </h4>
+                      
+                       <a asp-controller="Publications" asp-action="Create" class="btn btn-primary" >Enter Publication</a>
                     }
+
+                     @if(  ViewBag.errorauth == "xyz")
+                    {             
+                       <h4>@ViewBag.ErrorMessageAuth </h4>
+                      
+                      <a asp-controller="Author1" asp-action="Create" class="btn btn-primary" >Enter Author</a>
+                    }
+
+                     
                 </td>
             </tr>
            
         <div class="form-group">
             <tr> 
-                <td> <label asp-for="BookName" class="control-label"></label></td> 
+                <td> <b><label asp-for="BookName" class="control-label"></label></b></td> 
                 <td>  <input asp-for="BookName" class="form-control" />
                 <span asp-validation-for="BookName" class="text-danger"></span></td>
             </tr>
@@ -35,44 +46,44 @@ ViewData["Title"] = "Create";
             
         <div class="form-group">
             <tr>
-                <td> <label asp-for="AuthorName" class="control-label"></label></td>
+                <td> <b><label asp-for="AuthorName" class="control-label"></label></b></td>
                 <td> <input asp-for="AuthorName" class="form-control" />
                         <span asp-validation-for="AuthorName" class="text-danger"></span></td>
             </tr>          
          </div>
 
         <div class="form-group">
-            <tr> <td><label asp-for="PublicationName" class="control-label"></label></td>
+            <tr> <td><b><label asp-for="PublicationName" class="control-label"></label></b></td>
             <td> <input asp-for="PublicationName" class="form-control" />
             <span asp-validation-for="PublicationName" class="text-danger"></span></td></tr>
         </div>
 
         <div class="form-group">
-            <tr><td><label asp-for="Price" class="control-label"></label></td>
+            <tr><td><b><label asp-for="Price" class="control-label"></label></b></td>
             <td> <input asp-for="Price" class="form-control" />
             <span asp-validation-for="Price" class="text-danger"></span></td></tr>
         </div>
 
         <div class="form-group">
-            <tr><td><label asp-for="PurchaseDate" class="control-label"></label></td>
+            <tr><td><b><label asp-for="PurchaseDate" class="control-label"></label></b></td>
             <td> <input asp-for="PurchaseDate" class="form-control" />
             <span asp-validation-for="PurchaseDate" class="text-danger"></span></td>
         </tr></div>
 
         <div class="form-group">
-            <tr><td> <label asp-for="Quantity" class="control-label"></label></td>
+            <tr><td><b> <label asp-for="Quantity" class="control-label"></label></b></td>
             <td> <input asp-for="Quantity" class="form-control" />
             <span asp-validation-for="Quantity" class="text-danger"></span></td></tr>
         </div>
 
         <div class="form-group">
-            <tr><td> <label asp-for="BookLocation" class="control-label"></label></td>
+            <tr><td> <b><label asp-for="BookLocation" class="control-label"></label></b></td>
             <td>  <input asp-for="BookLocation" class="form-control" />
             <span asp-validation-for="BookLocation" class="text-danger"></span></td></tr>
         </div>
 
         <div class="form-group">
-            <tr><td> <label asp-for="RemainingQuantity" class="control-label"></label></td>
+            <tr><td><b> <label asp-for="RemainingQuantity" class="control-label"></label></b></td>
             <td> <input asp-for="RemainingQuantity" class="form-control" />
             <span asp-validation-for="RemainingQuantity" class="text-danger"></span></td></tr>
         </div>

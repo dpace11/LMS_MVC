@@ -21,40 +21,30 @@ namespace LMS_MVC.Controllers
             var totalAuthors = _context.Author1.Count();
             var totalafffiliaction = _context.Student.Count();
             var totalPublication = _context.Publications.Count();
+          
             var totalmembers = _context.Membership.Count(); ;
             var totalbooks = _context.Book.Count();
             var totalbookissued = _context.BookIssue.Count();
 
-            /*var mostIssuedBook = _context.BookIssue
-                                .GroupBy(x => x.Name)
-                                .Select(x => x.Key)
-                                .OrderByDescending(x => x.Count())
-                                .FirstOrDefault();*/
 
+            int mostIssuedBookId = _context.BookIssue.GroupBy(issue => issue.BookID)
+                .OrderByDescending(group => group.Count()) 
+                .Select(group => group.Key) 
+                .FirstOrDefault();
 
-           // var mostreadbook = _context.BookIssue.Select(x => x.Name).OrderDescending().FirstOrDefault();
-            //  var mostFamousAuthor=_context.BookIssue.OrderByDescending(b=>b.Name).FirstOrDefault();
+           var mostIssuedBookName=_context.Book.Where(c=>c.BookId== mostIssuedBookId).Select(c=>c.BookName).FirstOrDefault();
 
-            var popularityQuery = from author in _context.Author1
-                                  join book in _context.Book on author.AuthorName equals book.AuthorName into authorBooks
-                                  //join publication in _context.Publications on book.PublicationName equals publication.PublicationName into authorPublications
-                                  select new
-                                  {
-                                      AuthorName = author.AuthorName,
-                                      //PublicationCount = authorPublications.Count(),
-                                      BookCount = authorBooks.Count()
-                                  };
-
-            var mostFamousAuthor = popularityQuery.OrderByDescending(a => a.BookCount).FirstOrDefault();
+            var mostFamousAuthor = _context.Book.Where(b => b.BookId == mostIssuedBookId).Select(name => name.AuthorName).FirstOrDefault();
 
             ViewBag.totalAuthors = totalAuthors;
             ViewBag.totalafffiliaction = totalafffiliaction;
-            ViewBag.totalPulications = totalPublication;
+            ViewBag.totalPublication = totalPublication;
             ViewBag.totalmembers = totalmembers;
             ViewBag.totalbooks = totalbooks;
             ViewBag.totalbookissued = totalbookissued;
-           // ViewBag.mostreadbook = mostIssuedBook;
+            ViewBag.mostreadbook = mostIssuedBookName;
             ViewBag.mostFamousAuthor = mostFamousAuthor;
+          
 
 
 

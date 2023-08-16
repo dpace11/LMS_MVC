@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LMS_MVC.Data;
 using LMS_MVC.Models;
+using Microsoft.Identity.Client;
 
 namespace LMS_MVC.Controllers
 {
@@ -80,16 +81,19 @@ namespace LMS_MVC.Controllers
                     }
                     else
                     {
+                       
+                        ViewBag.errorpub ="abc";
 
                         string errormsg = "Publication name doesnot exist in database. ";
-                        ViewBag.ErrorMessage = errormsg;
+                        ViewBag.ErrorMessagePub = errormsg;
                         return View();
                     }
                 }
                 else
                 {
+                    ViewBag.errorauth = "xyz";
                     string errormsg = "Author name doesnot exist in database. ";
-                    ViewBag.ErrorMessage = errormsg;
+                    ViewBag.ErrorMessageAuth = errormsg;
                     return View();
                 }
             }

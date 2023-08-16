@@ -28,7 +28,7 @@ namespace LMS_MVC.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.Author1 != null ? 
-                          View(await _context.Author1.ToListAsync()) :
+                          View(await _context.Author1.OrderBy(x=>x.AuthorName).ToListAsync()) :
                           Problem("Entity set 'LMS_MVCContext.Author1'  is null.");
         }
 
@@ -89,6 +89,7 @@ namespace LMS_MVC.Controllers
                         Address = author1.Address,
                         PhoneNumber = author1.PhoneNumber,
                         Email = author1.Email,
+                        
                         ImagePath = fullPath
                     };
 

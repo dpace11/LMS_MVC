@@ -46,9 +46,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.ImagePath)
-            </th>
+            </th>*@
             <th>Actions</th>
         </tr>
     </thead>
@@ -68,9 +68,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
-               <img src="@Html.DisplayFor(modelItem=>item.ImagePath)" height="100px;" width="100px;"  ></img>
-            </td>
+           @* <td>
+               <img src="~/Content/Image/@item.ImagePath" height="100px;" width="100px;"  ></img>
+            </td>*@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-primary">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-primary">Details</a> |

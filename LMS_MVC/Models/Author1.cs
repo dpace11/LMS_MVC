@@ -12,6 +12,10 @@ namespace LMS_MVC.Models
         [Display(Name = "Author Name")]
         public string AuthorName { get; set; }
 
+        /*[Required(ErrorMessage ="User name cannot be empty")]
+        [StringLength(12,MinimumLength =6,ErrorMessage ="Username must be at least 6 characters long")]
+        public string AuthorUsername { get; set; }*/
+
 
         [Required(ErrorMessage = "Enter author's address")]
         [Display(Name = "Address")]
@@ -29,6 +33,8 @@ namespace LMS_MVC.Models
 
 
         [Required(ErrorMessage = "Please Select a image ")]
+        [Display(Name ="Image")]
         public string ImagePath { get; set; }
+
     }
 }
